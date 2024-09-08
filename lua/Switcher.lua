@@ -1,18 +1,19 @@
 local Switcher = {}
 
+Switcher.last_input_method = nil
+
 Switcher.get_current_input_method = function()
-	-- how can this command return nil if not running in mac...
-	local handle = io.popen("im-select")
-	local result = handle:read("*a")
-	handle:close()
-	return result
+	if not Switcher.last_input_method then
+		local handle = io.popen("im-select")
+		Switcher.last_input_method = handle:read("*a")
+		handle:close()
+	end
+	return Switcher.last_input_method
 end
 
 Switcher.set_input_method = function(input_method)
 	os.execute("im-select " .. input_method)
 end
-
-Switcher.last_input_method = Switcher.get_current_input_method()
 
 Switcher.InsertEnter_callback = function()
 	Switcher.set_input_method(Switcher.last_input_method)
@@ -39,8 +40,6 @@ Switcher.setup = function()
 	vim.api.nvim_create_autocmd("InsertLeave", {
 		callback = Switcher.InsertLeave_callback,
 	})
-
-    _G.Switcher = Switcher
 end
 
 return Switcher
