@@ -39,6 +39,8 @@ Switcher.setup = function()
 	vim.api.nvim_create_autocmd("InsertLeave", {
 		callback = Switcher.InsertLeave_callback,
 	})
+
+    _G.Switcher = Switcher
 end
 
 return Switcher
