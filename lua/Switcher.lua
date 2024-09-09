@@ -1,4 +1,5 @@
 local Switcher = {}
+
 Switcher.last_input_method = nil
 
 Switcher.get_current_input_method = function()
