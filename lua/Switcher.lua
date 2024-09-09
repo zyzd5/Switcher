@@ -5,7 +5,7 @@ Switcher.last_input_method = nil
 Switcher.get_current_input_method = function()
 	if not Switcher.last_input_method then
 		local handle = io.popen("im-select")
-		Switcher.last_input_method = handle:read("*a")
+		Switcher.last_input_method = handle:read("*a"):gsub("%s+", "")
 		handle:close()
 	end
 	return Switcher.last_input_method
