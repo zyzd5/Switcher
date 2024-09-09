@@ -21,8 +21,6 @@ Switcher.set_input_method = function(input_method)
 end
 
 Switcher.InsertEnter_callback = function()
-	Switcher.last_input_method = Switcher.get_current_input_method()
-
 	if Switcher.last_input_method then
 		Switcher.set_input_method(Switcher.last_input_method)
 	end
