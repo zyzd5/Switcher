@@ -27,7 +27,9 @@ end
 
 Switcher.InsertLeave_callback = function()
 	Switcher.last_input_method = Switcher.get_current_input_method()
-	Switcher.switch_to_en()
+	if Switcher.last_input_method ~= "com.apple.keylayout.ABC" then
+		Switcher.switch_to_en()
+	end
 end
 
 Switcher.helloworld = function(name)
