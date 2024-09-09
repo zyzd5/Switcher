@@ -33,10 +33,6 @@ Switcher.InsertLeave_callback = function()
 	end
 end
 
-Switcher.helloworld = function(name)
-	print("helloworld")
-end
-
 Switcher.setup = function()
 	vim.api.nvim_create_autocmd("InsertEnter", {
 		callback = Switcher.InsertEnter_callback,
@@ -45,6 +41,14 @@ Switcher.setup = function()
 	vim.api.nvim_create_autocmd("InsertLeave", {
 		callback = Switcher.InsertLeave_callback,
 	})
+end
+
+Switcher.helloworld = function()
+    print("helloworld")
+end
+
+Switcher.print_cur_input_method = function ()
+    print(Switcher.last_input_method)
 end
 
 return Switcher
