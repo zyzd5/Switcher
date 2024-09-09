@@ -18,9 +18,10 @@ end
 Switcher.InsertEnter_callback = function()
 	if Switcher.last_input_method == nil then
 		Switcher.last_input_method = Switcher.get_current_input_method()
+        Switcher.set_input_method(Switcher.last_input_method)
 	end
-	Switcher.set_input_method(Switcher.last_input_method)
 end
+
 Switcher.switch_to_en = function()
 	os.execute("im-select com.apple.keylayout.ABC")
 end
